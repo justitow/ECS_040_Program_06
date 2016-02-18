@@ -1,32 +1,14 @@
-CPU.out : decoder.o instruction.o labels.o main.o registers.o word.o data.o memory.o instruction2.o
-	g++ -Wall -ansi -g -o CPU.out decoder.o instruction.o labels.o main.o registers.o word.o data.o memory.o instruction2.o
+FileFind.out : main.o list.o directory.o
+	g++ -Wall -ansi -g -o FileFind.out main.o list.o directory.o
 
-decoder.o : decoder.cpp decoder.h instruction.h registers.h labels.h memory.h
-	g++ -Wall -ansi  -g -c decoder.cpp
-
-instruction.o : instruction.cpp instruction.h 
-	g++ -ansi -Wall -g -c instruction.cpp
-
-instruction2.o : instruction2.cpp instruction2.h
-	g++ -ansi -Wall -g -c instruction2.cpp
-
-labels.o : labels.cpp labels.h instruction2.h
-	g++ -ansi -Wall -g -c labels.cpp
-
-main.o : main.cpp registers.h decoder.h instruction.h labels.h data.h memory.h
+main.o : main.cpp list.h directory.h
 	g++ -ansi -Wall -g -c main.cpp
 
-registers.o : registers.cpp registers.h 
-	g++ -ansi -Wall -g -c registers.cpp
+directory.o : directory.cpp
+	g++ -ansi -Wall -g -c directory.cpp
 
-word.o : word.cpp word.h
-	g++ -ansi -Wall -g -c word.cpp
-
-data.o : data.cpp data.h word.h
-	g++ -ansi -Wall -g -c data.cpp
-
-memory.o : memory.cpp memory.h word.h data.h
-	g++ -ansi -Wall -g -c memory.cpp
+list.o : list.cpp
+	g++ -ansi -Wall -g -c list.cpp
 
 clean : 
-	rm -f CPU.out *.o
+	rm -f FileFind.out *.o
