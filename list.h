@@ -10,17 +10,31 @@
 #define list_h
 
 #include <iostream>
-using namespace std;
 
-template <class T>
+template <typename T>
 class ListNode
 {
 private:
+  T data;
   ListNode<T>* prev;
   ListNode<T>* next;
-  ListNode(ListNode<T>* back, ListNode<T>* forward);
-  ~ListNode();
 public:
+  ListNode<T>(ListNode<T>* back, ListNode<T>* forward);
+  ~ListNode<T>();
 };
+
+template <typename T>
+class List
+{
+private:
+  ListNode<T>* head;
+  ListNode<T>* curr;
+public:
+  List<T>(ListNode<T>* first, ListNode<T>* second);
+  ~List<T>();
+  void setData(const T& value);
+
+};
+
 
 #endif

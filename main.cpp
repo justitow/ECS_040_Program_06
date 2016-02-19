@@ -6,11 +6,18 @@
 //  Copyright © 2016 Justin Weich. All rights reserved.
 //
 
+#include "list.h"
+#include "list.cpp"
+#include "directory.h"
+
 #include <iostream>
 
 using namespace std;
 
-int main(int argc, const char * argv[]) {
-	// insert code here...
-    return 0;
+int main(int argc, const char * argv[])
+{
+	//ListNode<int>* mylist = new ListNode<int>(NULL, NULL);
+	List<int>* myList = new List<int>(NULL, NULL);
+	
+	return 0;
 }
