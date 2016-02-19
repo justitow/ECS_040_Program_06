@@ -12,4 +12,15 @@
 #include <iostream>
 using namespace std;
 
+template <class T>
+class ListNode
+{
+private:
+  ListNode<T>* prev;
+  ListNode<T>* next;
+  ListNode(ListNode<T>* back, ListNode<T>* forward);
+  ~ListNode();
+public:
+};
+
 #endif
