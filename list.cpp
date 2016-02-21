@@ -9,9 +9,10 @@
 #include "list.h"
 
 template <typename T>
-ListNode<T>::ListNode(ListNode<T>* back, ListNode<T>* forward): next(back),
-prev(forward), data(NULL)
+ListNode<T>::ListNode(ListNode<T>* back, ListNode<T>* forward, const T& input):
+											data(input),next(back), prev(forward)
 {
+	
 }
 
 template <typename T>
@@ -34,4 +35,10 @@ List<T>::~List()
 {
 	delete head;
 	delete curr;
+}
+
+template <typename T>
+void List<T>::insert(ListNode<T>* node)
+{
+	
 }

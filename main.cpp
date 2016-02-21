@@ -7,6 +7,7 @@
 //
 
 #include "list.h"
+#include "list.cpp"
 #include "directory.h"
 
 #include <iostream>
@@ -15,8 +16,8 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-	//ListNode<int>* mylist = new ListNode<int>(NULL, NULL);
 	List<int>* myList = new List<int>(NULL, NULL);
+	ListNode<int>* myNode = new ListNode<int>(NULL, NULL, 0);
 	
 	return 0;
 }

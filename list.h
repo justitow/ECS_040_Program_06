@@ -16,10 +16,10 @@ class ListNode
 {
 private:
   T data;
-  ListNode<T>* prev;
   ListNode<T>* next;
+  ListNode<T>* prev;
 public:
-  ListNode<T>(ListNode<T>* back, ListNode<T>* forward);
+  ListNode<T>(ListNode<T>* back, ListNode<T>* forward, const T& data);
   ~ListNode<T>();
 };
 
@@ -32,11 +32,11 @@ private:
 public:
   List<T>(ListNode<T>* first, ListNode<T>* second);
   ~List<T>();
-  void setData(const T& value);
-
+  bool find(char*);
+  void insert(ListNode<T>*);
+  void print();
 };
 
-#include "list.cpp"
 
 
 
