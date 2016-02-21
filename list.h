@@ -12,6 +12,9 @@
 #include <iostream>
 
 template <typename T>
+class List;
+
+template <typename T>
 class ListNode
 {
 private:
@@ -21,6 +24,7 @@ private:
 public:
   ListNode<T>(ListNode<T>* back, ListNode<T>* forward, const T& data);
   ~ListNode<T>();
+  friend class List<T>;
 };
 
 template <typename T>

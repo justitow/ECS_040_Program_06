@@ -11,13 +11,17 @@
 #include "directory.h"
 
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
 int main(int argc, const char * argv[])
 {
-	List<int>* myList = new List<int>(NULL, NULL);
-	ListNode<int>* myNode = new ListNode<int>(NULL, NULL, 0);
+	List<char*> myList(NULL, NULL);
 	
+	char* temp = new char;
+	strcpy(temp, "test");
+	
+	ListNode<char*> myNode(NULL, NULL, temp);
 	return 0;
 }
