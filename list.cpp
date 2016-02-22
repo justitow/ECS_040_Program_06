@@ -26,7 +26,7 @@ ListNode<T>::~ListNode<T>()
 
 
 template <typename T>
-List<T>::List(ListNode<T>* hea, ListNode<T>* cur) : head(hea), curr(cur)
+List<T>::List(ListNode<T>* first) : head(first), curr(first)
 {
 }
 
@@ -51,3 +51,4 @@ void List<T>::insert(ListNode<T>* node)
 {
 	
 }
+

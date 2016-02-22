@@ -4,7 +4,7 @@ FileFind.out : main.o list.o directory.o
 main.o : main.cpp list.h list.cpp directory.h
 	g++ -ansi -Wall -g -c main.cpp
 
-directory.o : directory.cpp
+directory.o : directory.cpp list.h
 	g++ -ansi -Wall -g -c directory.cpp
 
 clean : 

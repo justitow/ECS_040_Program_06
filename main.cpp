@@ -17,11 +17,8 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-	List<char*> myList(NULL, NULL);
-	
-	char* temp = new char;
-	strcpy(temp, "test");
-	
-	ListNode<char*> myNode(NULL, NULL, temp);
+  File* file = new File("hello");
+	ListNode<File*> myNode(NULL, NULL, file);
+  Directory myDirectory("hello");
 	return 0;
 }

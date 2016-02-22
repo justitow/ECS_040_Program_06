@@ -14,6 +14,8 @@
 template <typename T>
 class List;
 
+class File;
+
 template <typename T>
 class ListNode
 {
@@ -34,14 +36,12 @@ private:
   ListNode<T>* head;
   ListNode<T>* curr;
 public:
-  List<T>(ListNode<T>* first, ListNode<T>* second);
+  List<T>(ListNode<T>* first);
   ~List<T>();
   bool find(char*);
   void insert(ListNode<T>*);
   void print();
 };
-
-
 
 
 #endif
