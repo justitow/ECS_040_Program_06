@@ -62,7 +62,7 @@ Directory::~Directory()
   
 }
 
-bool Directory::find(char* input)
+bool Directory::find(const char* input)
 {
 	if (!strcmp(getName(), input))
 			{
@@ -91,5 +91,7 @@ bool Directory::operator==(const File&)
 {
   return false;
 }
+
+
 
 

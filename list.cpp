@@ -7,6 +7,7 @@
 //
 
 #include "list.h"
+#include "directory.h"
 
 template <typename T>
 ListNode<T>::ListNode(ListNode<T>* back, ListNode<T>* forward, const T& input):
@@ -51,4 +52,7 @@ void List<T>::insert(ListNode<T>* node)
 {
 	
 }
+
+template class ListNode<File*>;
+template class List<File*>;
 
