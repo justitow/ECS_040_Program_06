@@ -11,7 +11,7 @@
 
 template <typename T>
 ListNode<T>::ListNode(ListNode<T>* back, ListNode<T>* forward, const T& input):
-											data(input), next(back), prev(forward)
+								data(input), next(back), prev(forward)
 {
 }
 
