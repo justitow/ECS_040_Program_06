@@ -2,12 +2,12 @@
 //  list.cpp
 //  ECS_040_Program_06
 //
-//  Created by Justin Weich on 2/18/16.
-//  Copyright © 2016 Justin Weich. All rights reserved.
-//
+
 
 #include "list.h"
 #include "directory.h"
+#include <cctype>
+#include <cstring>
 
 template <typename T>
 ListNode<T>::ListNode(ListNode<T>* back, ListNode<T>* forward, const T& input):
@@ -48,9 +48,21 @@ List<T>::~List()
 }
 
 template <typename T>
+bool List<T>::find(char*)
+{
+  
+}
+
+template <typename T>
 void List<T>::insert(ListNode<T>* node)
 {
 	
+}
+
+template <typename T>
+void List<T>::print()
+{
+  
 }
 
 template class ListNode<File*>;
