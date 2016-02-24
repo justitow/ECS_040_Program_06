@@ -81,7 +81,7 @@ void List<T>::insert(T input)
         curr->next->prev = curr;
       } // otherwise, has to be greater than
       else
-        if (*curr->data > *input) // do we need this comparator?
+        if (*curr->data > *input) // do we need this?
         {
           while ((*curr) && (*curr->data > *input))
             curr = curr->prev;
@@ -89,7 +89,7 @@ void List<T>::insert(T input)
           curr->prev->next = curr;
           curr->next->prev = curr;
         } // end else
-} // instert()
+} // insert()
 
 template <typename T>
 void List<T>::print()
