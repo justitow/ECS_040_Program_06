@@ -4,7 +4,6 @@
 //
 
 #include "list.h"
-#include "list.cpp"
 #include "directory.h"
 
 #include <fstream>

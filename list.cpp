@@ -4,14 +4,13 @@
 //
 
 
-#include "list.h"
 #include "directory.h"
 #include <cctype>
 #include <cstring>
 
 template <typename T>
 ListNode<T>::ListNode(ListNode<T>* back, ListNode<T>* forward, const T& input):
-								data(input), next(back), prev(forward)
+							data(input), next(back), prev(forward)
 {
 }
 
@@ -57,7 +56,6 @@ bool List<T>::find(char*)
 template <typename T>
 void List<T>::insert(T input)
 {
-  ListNode<T> *ptr, *prev = NULL; // no extra credit if these are used :(
   if (!head)
   {
     head = new ListNode<T>(NULL, NULL, input);
@@ -66,17 +64,25 @@ void List<T>::insert(T input)
   else
     if (*curr->data == *input)
     {
-      //do nothing because same name
+      //do nothing because same name (doesn't insert into list)
     }
     else
       if (*curr->data < *input)
       {
-        //insert before
+        while ((*curr) && (*curr->data < *input))
+          curr = curr->next;
+        curr = new ListNode<T>(curr, curr->prev, input);
+        curr->prev->next = curr;
+        curr->next->prev = curr;
       }
       else
         if (*curr->data > *input)
         {
-       //insert after
+          while ((*curr) && (*curr->data > *input))
+            curr = curr->prev;
+          curr = new ListNode<T>(curr->next, curr, input);
+          curr->prev->next = curr;
+          curr->next->prev = curr;
         }
 }
 
@@ -86,6 +92,6 @@ void List<T>::print()
   
 }
 
-template class ListNode<File*>;
-template class List<File*>;
+//template class ListNode<File*>;
+//template class List<File*>;
 

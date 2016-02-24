@@ -12,7 +12,7 @@
 template <typename T>
 class List;
 
-class File;
+//class File;
 
 template <typename T>
 class ListNode
@@ -25,7 +25,7 @@ public:
   ListNode<T>(ListNode<T>* back, ListNode<T>* forward, const T& input);
   ~ListNode<T>();
   friend class List<T>;
-};
+}; // ListNode class
 
 template <typename T>
 class List
@@ -39,7 +39,8 @@ public:
   bool find(char*);
   void insert(T input);
   void print();
-};
+}; // List class
 
+#include "list.cpp"
 
 #endif

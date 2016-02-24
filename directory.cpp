@@ -5,6 +5,7 @@
 
 
 #include "directory.h"
+#include "list.h"
 
 #include <iostream>
 #include <cstring>
