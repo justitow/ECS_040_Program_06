@@ -5,7 +5,7 @@
 
 
 #include "directory.h"
-#include <cctype>
+//#include <cctype>
 #include <cstring>
 
 template <typename T>
