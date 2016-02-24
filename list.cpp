@@ -17,8 +17,8 @@ ListNode<T>::ListNode(ListNode<T>* back, ListNode<T>* forward, const T& input):
 template <typename T>
 ListNode<T>::~ListNode<T>()
 {
-	delete prev;
-	delete next;
+  delete prev;
+  delete next;
   delete data;
 } // ~ListNode()
 
