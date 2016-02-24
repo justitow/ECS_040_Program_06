@@ -5,7 +5,7 @@
 
 
 #include "directory.h"
-//#include <cctype>
+#include <cctype>
 #include <cstring>
 
 template <typename T>
@@ -97,7 +97,7 @@ void List<T>::print()
 
   for (curr = head; curr != NULL; curr= curr->next)
   {
-    cout << curr->data->getName() << endl;
+    std::cout << curr->data->getName() << std::endl;
   } // for
 
 } // print()
