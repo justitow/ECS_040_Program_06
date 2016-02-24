@@ -17,28 +17,28 @@ void read(const char* fileName) //fileName is argv[1]
 {
   ifstream file;
   file.open(fileName);
-  
   char line[256], *ptr;
-  
+
   while (file.getline(line, 256))
   {
   	ptr = line;
+
   	if (*ptr == 'd')
   	  {
   	    ptr = strrchr(line, ' ');
   	    ptr++;
   	  	//create new Directory with *ptr
   	  	//insert new Directory
-  	  }
-  	else
+  	  } // otherwise, its not a direcotry
+  	else //its a file
   	  {
   	  	ptr = strrchr(line, ' ');
   	  	ptr++;
         //create new File with *ptr
         //insert new File
-  	  }
-  }
-}
+  	  } //else nothing happens
+  } // while
+} // read
 
 int main(int argc, const char * argv[])
 {
@@ -46,4 +46,4 @@ int main(int argc, const char * argv[])
 	ListNode<File*> myNode(NULL, NULL, file);
   Directory myDirectory("hello");
 	return 0;
-}
+} // main()

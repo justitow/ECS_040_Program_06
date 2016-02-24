@@ -27,7 +27,7 @@ public:
 	virtual bool operator<(const File& rhs);
 	virtual bool operator>(const File& rhs);
 	virtual bool operator==(const File& rhs);
-	};
+};  // Class File
 
 class Directory : public File
 {
@@ -43,6 +43,6 @@ public:
 	virtual bool operator<(const File& rhs);
 	virtual bool operator>(const File& rhs);
 	virtual bool operator==(const File& rhs);
-};
+}; // Class Directory
 
 #endif
