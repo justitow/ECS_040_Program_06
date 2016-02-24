@@ -32,8 +32,8 @@ private:
   ListNode<T>* head;
   ListNode<T>* curr;
 public:
-  List<T>();//(ListNode<T>* first);
-  ~List<T>();
+  List();//(ListNode<T>* first);
+  ~List();
   bool find(char*);
   void insert(T input);
   void print();
