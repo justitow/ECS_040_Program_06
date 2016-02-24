@@ -7,6 +7,7 @@
 #include "directory.h"
 
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -18,10 +19,10 @@ File::File(const char* input)
 
 File::~File()
 {
-	delete name;
+	delete [] name;
 }
 
-const char* File::getName()
+const char* File::getName() const
 {
 	return name;
 }
@@ -34,6 +35,7 @@ bool File::find(const char* input) //input not needed?
 
 void File::insert(const char* input)
 {
+	//File::insert does nothing!
 }
 
 bool File::operator<(const File& rhs)
@@ -58,8 +60,8 @@ bool File::operator==(const File& rhs)
 }
 
 Directory::Directory(const char* arg) :
-  File(arg),
-  files(new ListNode<File*>(NULL, NULL, new File(arg)))
+  File(arg)//,
+  //files(new ListNode<File*>(NULL, NULL, new File(arg)))
 {
 }
 
@@ -89,18 +91,30 @@ void Directory::insert(const char* input)
   //loop through main's list (of directories?) and insert if imperfect match
 }
 
-bool Directory::operator<(const File&)
+bool Directory::operator<(const File& rhs)
 {
+	if (strncmp(getName(), rhs.getName(), strlen(getName())) < 0)
+	  return true;
   return false;
 }
 
-bool Directory::operator>(const File&)
+bool Directory::operator>(const File& rhs)
 {
+	if (strncmp(getName(), rhs.getName(), strlen(getName())) > 0)
+	  return true;
   return false;
 }
 
-bool Directory::operator==(const File&)
+bool Directory::operator==(const File& rhs)
 {
+	const char *ptr;
+	if (strncmp(getName(), rhs.getName(), strlen(getName())) == 0)
+	{
+		ptr = rhs.getName();
+	  ptr += strlen(getName());
+	  if (*ptr == '/')
+	    return true;
+	}  
   return false;
 }
 

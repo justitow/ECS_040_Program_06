@@ -20,14 +20,15 @@ ListNode<T>::~ListNode<T>()
 {
 	delete prev;
 	delete next;
-	delete data;
+    delete data;
 }
 
 
 
 
 template <typename T>
-List<T>::List(ListNode<T>* first) : head(first), curr(first)
+List<T>::List() : head(NULL), curr(NULL)
+//List<T>::List(ListNode<T>* first) : head(first), curr(first)
 {
 }
 
@@ -54,9 +55,29 @@ bool List<T>::find(char*)
 }
 
 template <typename T>
-void List<T>::insert(ListNode<T>* node)
+void List<T>::insert(T input)
 {
-	
+  ListNode<T> *ptr, *prev = NULL; // no extra credit if these are used :(
+  if (!head)
+  {
+    head = new ListNode<T>(NULL, NULL, input);
+    curr = head;
+  }
+  else
+    if (*curr->data == *input)
+    {
+      //do nothing because same name
+    }
+    else
+      if (*curr->data < *input)
+      {
+        //insert before
+      }
+      else
+        if (*curr->data > *input)
+        {
+       //insert after
+        }
 }
 
 template <typename T>

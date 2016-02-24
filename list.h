@@ -22,7 +22,7 @@ private:
   ListNode<T>* next;
   ListNode<T>* prev;
 public:
-  ListNode<T>(ListNode<T>* back, ListNode<T>* forward, const T& data);
+  ListNode<T>(ListNode<T>* back, ListNode<T>* forward, const T& input);
   ~ListNode<T>();
   friend class List<T>;
 };
@@ -34,10 +34,10 @@ private:
   ListNode<T>* head;
   ListNode<T>* curr;
 public:
-  List<T>(ListNode<T>* first);
+  List<T>();//(ListNode<T>* first);
   ~List<T>();
   bool find(char*);
-  void insert(ListNode<T>*);
+  void insert(T input);
   void print();
 };
 
