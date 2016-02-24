@@ -94,5 +94,10 @@ void List<T>::insert(T input)
 template <typename T>
 void List<T>::print()
 {
-  
+
+  for (curr = head; curr != NULL; curr= curr->next)
+  {
+    cout << curr->data->getName() << endl;
+  } // for
+
 } // print()
