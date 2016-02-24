@@ -74,7 +74,7 @@ void List<T>::insert(T input)
 
       if (*curr->data < *input)
       {
-        while ((*curr) && (*curr->data < *input))
+        while ((curr != NULL) && (*curr->data < *input)) // changed from (*curr)
           curr = curr->next;
         curr = new ListNode<T>(curr, curr->prev, input);
         curr->prev->next = curr;
@@ -83,7 +83,7 @@ void List<T>::insert(T input)
       else
         if (*curr->data > *input) // do we need this?
         {
-          while ((*curr) && (*curr->data > *input))
+          while ((curr != NULL) && (*curr->data > *input)) // same change
             curr = curr->prev;
           curr = new ListNode<T>(curr->next, curr, input);
           curr->prev->next = curr;
@@ -97,7 +97,7 @@ void List<T>::print()
 
   for (curr = head; curr != NULL; curr= curr->next)
   {
-    std::cout << curr->data->getName() << std::endl;
+    std::cout << curr->data->getName() << std::endl; //not sure if this compiles
   } // for
 
 } // print()

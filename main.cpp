@@ -42,8 +42,13 @@ void read(const char* fileName) //fileName is argv[1]
 
 int main(int argc, const char * argv[])
 {
-  File* file = new File("hello");
+  File* file = new File("hello.txt");
 	ListNode<File*> myNode(NULL, NULL, file);
-  Directory myDirectory("hello");
+	List<File*> myList();
+	myList.insert(myNode);
+	myList.print();
+  Directory myDirectory("folder");
+  
+  cout << "Hello?" << endl;
 	return 0;
 } // main()
