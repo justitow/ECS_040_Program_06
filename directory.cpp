@@ -34,9 +34,10 @@ bool File::find(const char* input) //input not needed?
   return true;
 } // find()
 
-void File::insert(const char* input)
+void File::insert(File* file)
 {
   //File::insert does nothing!
+
 } //insert()
 
 bool File::operator<(const File& rhs)
@@ -89,9 +90,16 @@ bool Directory::find(const char* input)
     } // else
 } // find()
 
-void Directory::insert(const char* input)
+void Directory::insert(File* file)
 {
-  //loop through main's list (of directories?) and insert if imperfect match
+  if (strcmp(getName(), file->getName()) == 0)
+  {
+    //do nothing 
+  }
+  else
+  {
+    files.insert(file);
+  }
 } // insert
 
 bool Directory::operator<(const File& rhs)
