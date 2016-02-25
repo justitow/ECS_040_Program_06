@@ -28,9 +28,9 @@ const char* File::getName() const
   return name;
 } // getName()
 
-bool File::find(const char* input)
+bool File::find(File* input)
 {
-  cout << name << endl;
+  cout << input->getName() << endl;
   return true;
 } // find()
 
@@ -72,10 +72,10 @@ Directory::~Directory()
 {
 } // ~Directory()
 
-bool Directory::find(const char* input)
+bool Directory::find(File* input)
 {
 
-  if (strcmp(getName(), input) == 0) //perfect match, prints List of Directory
+  if (strcmp(getName(), input->getName()) == 0) //perfect match, prints List of Directory
   {
     files.print();
       //loop through List<File*> files and find() to print file names
@@ -83,8 +83,8 @@ bool Directory::find(const char* input)
   } // otherwise, not a match
   else //imperfect match, call find of its List
     {
-      File* file = new File(input);
-      files.find(file);
+      //File* file = new File(input->getName());
+      files.find(input);
       //call find of its List
       return false;
     } // else
@@ -95,11 +95,11 @@ void Directory::insert(File* file)
   if (strcmp(getName(), file->getName()) == 0)
   {
     //do nothing 
-  }
-  else
+  } // endif
+  else // strings are same
   {
     files.insert(file);
-  }
+  } // else
 } // insert
 
 bool Directory::operator<(const File& rhs)

@@ -17,9 +17,9 @@ void read(const char* fileName, List<File*>* mainList) //fileName is argv[1]
   //std::cout << fileName << std::endl;
   ifstream file;
   file.open(fileName);
-  char line[256];
-  const char* ptr;
-  while (file.getline(line, 256))
+  char line[1024];
+  char* ptr;
+  while (file.getline(line, 1024))
   {
     ptr = line;
     
@@ -27,15 +27,19 @@ void read(const char* fileName, List<File*>* mainList) //fileName is argv[1]
     {
       ptr = strrchr(line, ' ');
       ptr++;
+      cout << ptr << endl;
       Directory *directory = new Directory(ptr);
-      mainList->insert(directory); 
+      mainList->insert(directory);
+      cout << "inserted directory" << endl;
     } // otherwise, its not a direcotry
     else //its a file
     {
       ptr = strrchr(line, ' ');
       ptr++;
+      cout << ptr << endl;
       File *file = new File(ptr);
       mainList->insert(file);
+      cout << "inserted file" << endl;
     } //else nothing happens
   } // while
 } // read
@@ -44,7 +48,9 @@ int main(int argc, const char * argv[])
 {
   char input[256];
   List<File*>* list = new List<File*>();
+  cout << "reading list" << endl;
   read(argv[1], list);
+  cout << "done reading list, now printing" << endl;
   list->print();
   /*cout << "Please enter a file name (Done = exit): " << endl;
   cin >> input;

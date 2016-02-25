@@ -6,6 +6,9 @@
 
 #include "directory.h"
 #include <cstring>
+#include <iostream>
+
+using namespace std;
 
 template <typename T>
 //ListNode<T>::ListNode(ListNode<T>* back, ListNode<T>* forward, const T& input):
@@ -32,6 +35,13 @@ List<T>::List() : head(NULL), curr(NULL)
 template <typename T>
 List<T>::~List()
 {
+  for(ListNode<T> *ptr = head; ptr; ptr = head)
+  {
+    head = ptr->next;
+    delete ptr;
+  }
+}
+/*{
 
   if (head != NULL)
   {
@@ -46,47 +56,67 @@ List<T>::~List()
   } // otherwise, empty object, no reason to delete anything
   
 } // ~List()
-
+*/
 template <typename T>
 bool List<T>::find(T input)
 {
+  ListNode<T> *ptr;
+  
+  for (ptr = head; ptr; ptr = ptr->next)
+  {
+    if((*ptr->data == *input) && (ptr->data->find(input)))
+      return true;
+  }
+  return false;
+}
+/*
+{
   curr = head;
+
   if (*curr->data == *input)
-    
     return true;
-  else
+  else // not equal
+
     if (*curr->data < *input)
     {
       while ((curr->next != NULL) && (*curr->data < *input))
         curr = curr->next;
+
       if (*curr->data == *input)
         return true;
-    }
-    else
+    } // if
+    else // curr->data > *input
+
       if (*curr->data > *input)
       {
         while ((curr->prev != NULL) && (*curr->data > *input))
           curr = curr->prev;
         if (*curr->data == *input)
           return true;
-      }
+      } // if
   return false;
 } // find()
-
+*/
 template <typename T>
 void List<T>::insert(T input)
 {
-  ListNode<T> *prev = NULL;
-  for (curr = head; curr && *curr->data < *input; prev = curr, curr = curr->next);
-  if (*curr->data == *input)
-    curr->data->insert(input);
-  else
-  if (curr)
+  cout << "calling insert" << endl;
+  ListNode<T> *ptr, *prev = NULL;
+  for (ptr = head; ptr && *ptr->data < *input; ptr = ptr->next)
+    prev = ptr;
+
+  if (prev)
+  {
+    if (*prev->data == *input)
     {
-      prev->next = new ListNode<T>(curr, input);
+      cout << "calling insert for directory" << endl;
+      prev->data->insert(input);
     }
     else
-      head = new ListNode<T>(curr, input);
+      prev->next = new ListNode<T>(prev, input);
+  } // if
+    else
+      head = new ListNode<T>(prev, input);
 }
 /*{
   ListNode<T> *ptr, *prev = NULL;

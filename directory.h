@@ -22,7 +22,7 @@ public:
   virtual ~File();
   
   const char* getName() const;
-  virtual bool find(const char* input);
+  virtual bool find(File* input);
   virtual void insert(File* file);
   virtual bool operator<(const File& rhs);
   virtual bool operator>(const File& rhs);
@@ -38,7 +38,7 @@ public:
   Directory(const char* arg);
   ~Directory();
 
-  virtual bool find(const char* input);
+  virtual bool find(File* input);
   virtual void insert(File* file);
   virtual bool operator<(const File& rhs);
   virtual bool operator>(const File& rhs);
