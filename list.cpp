@@ -42,8 +42,6 @@ List<T>::~List()
         delete curr->prev;
 		} // almost done deleting
 
-		if (curr != NULL)
-      delete curr;
 	} // otherwise, empty object, no reason to delete anything
 	
 } // ~List()
@@ -77,6 +75,7 @@ template <typename T>
 void List<T>::insert(T input)
 {
   curr = head;
+
   if (head == NULL)
   {
     head = new ListNode<T>(NULL, NULL, input);
@@ -85,7 +84,7 @@ void List<T>::insert(T input)
   else
     {
       curr = head;
-      
+
       while(curr->next != NULL && *curr->next->data < *input)
       {
         curr = curr->next;
