@@ -15,34 +15,34 @@
 class File
 {
 protected:
-	char* name;
+  char* name;
 private:
 public:
-	File(const char* input);
-	virtual ~File();
-	
-	const char* getName() const;
-	virtual bool find(const char* input);
-	virtual void insert(const char* input);
-	virtual bool operator<(const File& rhs);
-	virtual bool operator>(const File& rhs);
-	virtual bool operator==(const File& rhs);
+  File(const char* input);
+  virtual ~File();
+  
+  const char* getName() const;
+  virtual bool find(const char* input);
+  virtual void insert(const char* input);
+  virtual bool operator<(const File& rhs);
+  virtual bool operator>(const File& rhs);
+  virtual bool operator==(const File& rhs);
 };  // Class File
 
 class Directory : public File
 {
 protected:
 private:
-	List<File*> files;
+  List<File*> files;
 public:
-	Directory(const char* arg);
-	~Directory();
+  Directory(const char* arg);
+  ~Directory();
 
-	virtual bool find(const char* input);
-	virtual void insert(const char* input);
-	virtual bool operator<(const File& rhs);
-	virtual bool operator>(const File& rhs);
-	virtual bool operator==(const File& rhs);
+  virtual bool find(const char* input);
+  virtual void insert(const char* input);
+  virtual bool operator<(const File& rhs);
+  virtual bool operator>(const File& rhs);
+  virtual bool operator==(const File& rhs);
 }; // Class Directory
 
 #endif
