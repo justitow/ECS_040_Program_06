@@ -9,7 +9,7 @@
 
 template <typename T>
 ListNode<T>::ListNode(ListNode<T>* back, ListNode<T>* forward, const T& input):
-							data(input), next(back), prev(forward)
+              data(input), next(back), prev(forward)
 {
 } // ListNode()
 
@@ -32,18 +32,18 @@ template <typename T>
 List<T>::~List()
 {
 
-	if (head != NULL)
-	{
+  if (head != NULL)
+  {
 
-		for (curr = head; curr->next != NULL; curr = curr->next )
-		{
+    for (curr = head; curr->next != NULL; curr = curr->next )
+    {
 
-			if (curr->prev != NULL)
+      if (curr->prev != NULL)
         delete curr->prev;
-		} // almost done deleting
+    } // almost done deleting
 
-	} // otherwise, empty object, no reason to delete anything
-	
+  } // otherwise, empty object, no reason to delete anything
+  
 } // ~List()
 
 template <typename T>

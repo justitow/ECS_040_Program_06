@@ -14,49 +14,49 @@ using namespace std;
 
 File::File(const char* input)
 {
-	name = new char[strlen(input) + 1];
-	strcpy(name, input);
+  name = new char[strlen(input) + 1];
+  strcpy(name, input);
 } // File()
 
 File::~File()
 {
-	delete [] name; // what does the [] do?
+  delete [] name; // what does the [] do?
 } // ~File
 
 const char* File::getName() const
 {
-	return name;
+  return name;
 } // getName()
 
 bool File::find(const char* input) //input not needed?
 {
-	cout << name << endl;
-	return true;
+  cout << name << endl;
+  return true;
 } // find()
 
 void File::insert(const char* input)
 {
-	//File::insert does nothing!
+  //File::insert does nothing!
 } //insert()
 
 bool File::operator<(const File& rhs)
 {
-	if ((strcmp(name, rhs.name)) < 0)
-	  return true;
-	return false;
+  if ((strcmp(name, rhs.name)) < 0)
+    return true;
+  return false;
 } // operator<
 
 bool File::operator>(const File& rhs)
 {
-	if ((strcmp(name, rhs.name)) > 0)
-	  return true;
+  if ((strcmp(name, rhs.name)) > 0)
+    return true;
   return false;
 } // operator>
 
 bool File::operator==(const File& rhs)
 {
-	if ((strcmp(name, rhs.name)) == 0)
-	  return true;
+  if ((strcmp(name, rhs.name)) == 0)
+    return true;
   return false;
 } //opeartor==
 
@@ -74,18 +74,18 @@ Directory::~Directory()
 bool Directory::find(const char* input)
 {
 
-	if (strcmp(getName(), input) == 0) //perfect match, prints List of Directory
-	{
-		files.print();
-			//loop through List<File*> files and find() to print file names
-			return true;
-	} // otherwise, not a match
+  if (strcmp(getName(), input) == 0) //perfect match, prints List of Directory
+  {
+    files.print();
+      //loop through List<File*> files and find() to print file names
+      return true;
+  } // otherwise, not a match
   else //imperfect match, call find of its List
     {
-    	File* file = new File(input);
-    	files.find(file);
-    	//call find of its List
-    	return false;
+      File* file = new File(input);
+      files.find(file);
+      //call find of its List
+      return false;
     } // else
 } // find()
 
@@ -97,30 +97,30 @@ void Directory::insert(const char* input)
 bool Directory::operator<(const File& rhs)
 {
 
-	if (strncmp(getName(), rhs.getName(), strlen(getName())) < 0)
-	  return true;
+  if (strncmp(getName(), rhs.getName(), strlen(getName())) < 0)
+    return true;
   return false;
 } //operator<
 
 bool Directory::operator>(const File& rhs)
 {
-	if (strncmp(getName(), rhs.getName(), strlen(getName())) > 0)
-	  return true;
+  if (strncmp(getName(), rhs.getName(), strlen(getName())) > 0)
+    return true;
   return false;
 } // operator>
 
 bool Directory::operator==(const File& rhs)
 {
-	const char *ptr;
+  const char *ptr;
 
-	if (strncmp(getName(), rhs.getName(), strlen(getName())) == 0)
-	{
-		ptr = rhs.getName();
-	  ptr += strlen(getName());
+  if (strncmp(getName(), rhs.getName(), strlen(getName())) == 0)
+  {
+    ptr = rhs.getName();
+    ptr += strlen(getName());
 
-	  if (*ptr == '/')
-	    return true;
-	} //otherwise, name isn't right.
+    if (*ptr == '/')
+      return true;
+  } //otherwise, name isn't right.
 
   return false;
 } //operator==
