@@ -44,7 +44,7 @@ void read(const char* fileName, List<File*>* mainList) //fileName is argv[1]
     {
       strok(NULL, " ")
     }
-    cout << token;
+    cout << token << endl;
 
     
   } // while
