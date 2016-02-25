@@ -16,7 +16,7 @@ File::File(const char* input)
 {
   name = new char[strlen(input) + 1];
   strcpy(name, input);
-} // File()
+  } // File()
 
 File::~File()
 {
@@ -126,7 +126,7 @@ bool Directory::operator==(const File& rhs)
     ptr = rhs.getName();
     ptr += strlen(getName());
 
-    if (*ptr == '/')
+    if (*ptr == '/' || *ptr == '\0')
       return true;
   } //otherwise, name isn't right.
 

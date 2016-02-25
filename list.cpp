@@ -27,7 +27,7 @@ ListNode<T>::~ListNode<T>()
 
 
 template <typename T>
-List<T>::List() : head(NULL), curr(NULL)
+List<T>::List() : head(NULL), curr(head)
 //List<T>::List(ListNode<T>* first) : head(first), curr(first)
 {
 } //List()
@@ -163,6 +163,12 @@ void List<T>::insert(T input)
 template <typename T>
 void List<T>::print()
 {
+  ListNode<T> *ptr;
+  
+  for (ptr = head; ptr; ptr = ptr->next)
+    cout << ptr->data->getName() << endl;
+}
+/*{
 
   for (curr = head; curr != NULL; curr= curr->next)
   {
@@ -170,3 +176,4 @@ void List<T>::print()
   } // for
 
 } // print()
+*/
