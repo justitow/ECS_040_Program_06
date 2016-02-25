@@ -18,9 +18,10 @@ class ListNode
 private:
   T data;
   ListNode<T>* next;
-  ListNode<T>* prev;
+  //ListNode<T>* prev;
 public:
-  ListNode<T>(ListNode<T>* back, ListNode<T>* forward, const T& input);
+  //ListNode<T>(ListNode<T>* back, ListNode<T>* forward, const T& input);
+  ListNode<T>(ListNode<T> *nxt, const T& input);
   ~ListNode<T>();
   friend class List<T>;
 }; // ListNode class

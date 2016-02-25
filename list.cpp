@@ -8,8 +8,9 @@
 #include <cstring>
 
 template <typename T>
-ListNode<T>::ListNode(ListNode<T>* back, ListNode<T>* forward, const T& input):
-              data(input), next(back), prev(forward)
+//ListNode<T>::ListNode(ListNode<T>* back, ListNode<T>* forward, const T& input):
+              //data(input), next(back), prev(forward)
+ListNode<T>::ListNode(ListNode<T> *nxt, const T& input):data(input), next(nxt)
 {
 } // ListNode()
 
@@ -49,8 +50,9 @@ List<T>::~List()
 template <typename T>
 bool List<T>::find(T input)
 {
-  //curr = head;
+  curr = head;
   if (*curr->data == *input)
+    
     return true;
   else
     if (*curr->data < *input)
@@ -74,7 +76,25 @@ bool List<T>::find(T input)
 template <typename T>
 void List<T>::insert(T input)
 {
-  curr = head;
+  ListNode<T> *prev = NULL;
+  for (curr = head; curr && *curr->data < *input; prev = curr, curr = curr->next);
+  if (*curr->data == *input)
+    curr->data->insert(input);
+  else
+  if (curr)
+    {
+      prev->next = new ListNode<T>(curr, input);
+    }
+    else
+      head = new ListNode<T>(curr, input);
+}
+/*{
+  ListNode<T> *ptr, *prev = NULL;
+  for(ptr = head, ptr && *ptr->data->getName() < *input; prev = ptr; ptr = ptr->next);
+  
+}
+/*{
+  //curr = head;
 
   if (head == NULL)
   {
@@ -86,7 +106,7 @@ void List<T>::insert(T input)
       curr = head;
       while(curr->next != NULL && *curr->next->data < *input)
         curr = curr->next;
-      if (((curr->next != NULL && *curr->next->data == *input) || 
+      if ((curr->next != NULL) && (*curr->next->data == *input) || 
             *curr->data == *input))
         return;
       if (curr->next != NULL || *curr->data > *input)
@@ -105,8 +125,10 @@ void List<T>::insert(T input)
       else
         if (*curr->data < *input)
           curr->next = new ListNode<T>(NULL, curr, input);
+          
     } //commenting like this seems like arbitrary bs
 } // insert()
+*/
 
 template <typename T>
 void List<T>::print()

@@ -28,7 +28,7 @@ const char* File::getName() const
   return name;
 } // getName()
 
-bool File::find(const char* input) //input not needed?
+bool File::find(const char* input)
 {
   cout << name << endl;
   return true;
