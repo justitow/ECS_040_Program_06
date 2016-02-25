@@ -84,11 +84,8 @@ void List<T>::insert(T input)
   else
     {
       curr = head;
-
       while(curr->next != NULL && *curr->next->data < *input)
-      {
         curr = curr->next;
-      }
       if (((curr->next != NULL && *curr->next->data == *input) || 
             *curr->data == *input))
         return;
@@ -98,21 +95,17 @@ void List<T>::insert(T input)
           {
             head = new ListNode<T>(head, NULL, input);
             head->next->prev = head;
-          }
+          } // not beggining
         else
         {
           curr->next->prev = new ListNode<T>(curr->next, curr, input);
           curr->next = curr->next->prev;
-        }
+        } //other things happen
       }
       else
-      {
         if (*curr->data < *input)
-        {
           curr->next = new ListNode<T>(NULL, curr, input);
-        }
-      }
-    }
+    } //commenting like this seems like arbitrary bs
 } // insert()
 
 template <typename T>
