@@ -5,7 +5,6 @@
 
 
 #include "directory.h"
-#include <cctype>
 #include <cstring>
 
 template <typename T>
@@ -50,45 +49,71 @@ List<T>::~List()
 } // ~List()
 
 template <typename T>
-bool List<T>::find(char*)
+bool List<T>::find(T input)
 {
-  
+  //curr = head;
+  if (*curr->data == *input)
+    return true;
+  else
+    if (*curr->data < *input)
+    {
+      while ((curr->next != NULL) && (*curr->data < *input))
+        curr = curr->next;
+      if (*curr->data == *input)
+        return true;
+    }
+    else
+      if (*curr->data > *input)
+      {
+        while ((curr->prev != NULL) && (*curr->data > *input))
+          curr = curr->prev;
+        if (*curr->data == *input)
+          return true;
+      }
+  return false;
 } // find()
 
 template <typename T>
 void List<T>::insert(T input)
 {
-
-  if (!head)
+  curr = head;
+  if (head == NULL)
   {
     head = new ListNode<T>(NULL, NULL, input);
     curr = head;
   } // head exists
   else
-
-    if (*curr->data == *input)
     {
-      //do nothing because same name (doesn't insert into list)
-    } // endif
-    else
-
-      if (*curr->data < *input)
+      curr = head;
+      
+      while(curr->next != NULL && *curr->next->data < *input)
       {
-        while ((curr != NULL) && (*curr->data < *input)) // changed from (*curr)
-          curr = curr->next;
-        curr = new ListNode<T>(curr, curr->prev, input);
-        curr->prev->next = curr;
-        curr->next->prev = curr;
-      } // otherwise, has to be greater than
-      else
-        if (*curr->data > *input) // do we need this?
+        curr = curr->next;
+      }
+      if (((curr->next != NULL && *curr->next->data == *input) || 
+            *curr->data == *input))
+        return;
+      if (curr->next != NULL || *curr->data > *input)
+      {
+        if (curr->prev == NULL)
+          {
+            head = new ListNode<T>(head, NULL, input);
+            head->next->prev = head;
+          }
+        else
         {
-          while ((curr != NULL) && (*curr->data > *input)) // same change
-            curr = curr->prev;
-          curr = new ListNode<T>(curr->next, curr, input);
-          curr->prev->next = curr;
-          curr->next->prev = curr;
-        } // end else
+          curr->next->prev = new ListNode<T>(curr->next, curr, input);
+          curr->next = curr->next->prev;
+        }
+      }
+      else
+      {
+        if (*curr->data < *input)
+        {
+          curr->next = new ListNode<T>(NULL, curr, input);
+        }
+      }
+    }
 } // insert()
 
 template <typename T>

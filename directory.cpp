@@ -74,13 +74,16 @@ Directory::~Directory()
 bool Directory::find(const char* input)
 {
 
-	if (!strcmp(getName(), input)) //perfect match, prints List of Directory
-			{
-				//loop through List<File*> files and find() to print file names
-				return true;
-			} // otherwise, not a match
+	if (strcmp(getName(), input) == 0) //perfect match, prints List of Directory
+	{
+		files.print();
+			//loop through List<File*> files and find() to print file names
+			return true;
+	} // otherwise, not a match
   else //imperfect match, call find of its List
     {
+    	File* file = new File(input);
+    	files.find(file);
     	//call find of its List
     	return false;
     } // else

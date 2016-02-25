@@ -34,7 +34,7 @@ private:
 public:
   List();//(ListNode<T>* first);
   ~List();
-  bool find(char*);
+  bool find(T input);
   void insert(T input);
   void print();
 }; // List class

@@ -12,12 +12,12 @@
 
 using namespace std;
 
-
 void read(const char* fileName) //fileName is argv[1]
 {
   ifstream file;
   file.open(fileName);
-  char line[256], *ptr;
+  char line[256];
+  const char* ptr;
 
   while (file.getline(line, 256))
   {
@@ -27,15 +27,15 @@ void read(const char* fileName) //fileName is argv[1]
   	  {
   	    ptr = strrchr(line, ' ');
   	    ptr++;
-  	  	//create new Directory with *ptr
-  	  	//insert new Directory
+  	  	Directory *directory = new Directory(ptr);
+  	  	directory->insert(directory->getName());
   	  } // otherwise, its not a direcotry
   	else //its a file
   	  {
   	  	ptr = strrchr(line, ' ');
   	  	ptr++;
-        //create new File with *ptr
-        //insert new File
+        File *file = new File(ptr);
+        file->insert(file->getName());
   	  } //else nothing happens
   } // while
 } // read
@@ -43,12 +43,19 @@ void read(const char* fileName) //fileName is argv[1]
 int main(int argc, const char * argv[])
 {
   File* file = new File("hello.txt");
-	ListNode<File*> myNode(NULL, NULL, file);
-	List<File*> myList();
-	myList.insert(myNode);
-	myList.print();
-  Directory myDirectory("folder");
-  
-  cout << "Hello?" << endl;
+  Directory* dir = new Directory("apple");
+  File* newf = new File("aaple");
+  File* other = new File("arg");
+  File* blah = new File("zz");
+  File* dup = new File("zz");
+	List<File*> file_structure;
+	file_structure.insert(file);
+	file_structure.insert(dir);
+	file_structure.insert(newf);
+	file_structure.insert(other);
+	file_structure.insert(dup);
+	std::cout << file_structure.find(blah) << std::endl;
+	
+	file_structure.print();
 	return 0;
 } // main()

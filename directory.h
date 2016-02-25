@@ -18,7 +18,7 @@ protected:
 	char* name;
 private:
 public:
-	File(const char*);
+	File(const char* input);
 	virtual ~File();
 	
 	const char* getName() const;
@@ -35,7 +35,7 @@ protected:
 private:
 	List<File*> files;
 public:
-	Directory(const char*);
+	Directory(const char* arg);
 	~Directory();
 
 	virtual bool find(const char* input);
